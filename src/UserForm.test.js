@@ -19,7 +19,12 @@ test('it calls onUserAdd when form is submited', () => {
     const mock = jest.fn()
     render(<UserForm onUserAdd={mock}/>)
     // find two inputs 
-    const [nameInput, emailInput] = screen.getAllByRole('textbox')
+    const nameInput = screen.getByRole('textbox', {
+        name: /name/i
+    })
+    const emailInput = screen.getByRole('textbox', {
+        name: /email/i
+    })
     // simulate type a name 
     user.click(nameInput)
     user.keyboard('walter')
